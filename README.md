@@ -23,11 +23,9 @@ different prefix is provided to configure. (See pkg/INSTALL.)
 Reference
 ---------
 
-**Fitting probabilistic models of genetic variation on millions of humans**
-
-P. Gopalan, W. Hao, D.M. Blei, J.D. Storey
-
-*In submission.*
+**Fitting probabilistic models of genetic variation on millions of humans**  
+**P. Gopalan, W. Hao, D.M. Blei, J.D. Storey**    
+*In submission.*  
 
 Abstract
 --------
@@ -68,12 +66,12 @@ Example
 
 Please see pkg/scripts/pop.pl for an example of how nonconjugate inference is run under the marginal model.
 
-./src/popgen -file hgdp_940.012 -n 940 -k 6 -l 619883 -label snp  -rfreq 1000 -idfile 1kG_1500.indv -marginf
+./src/popgen -file hgdp_940.012 -n 940 -k 6 -l 619883 -label snp  -rfreq 1000 -idfile 1kG_1500.indv -A
 
 * Output written to directory n940-k6-l619883-snp/
-* theta.txt, beta.txt: approximate posterior mixed-memberships and 
+* theta.txt, beta.txt: approximate posterior mixed-memberships 
 
-Note that theta.txt is saved periodically even before convergence and can be used to monitor results. Convergence is fast even on large datasets requiring only several hours. However, beta.txt is saved at the end, and it can take a long time (several days).
+Note that theta.txt is saved periodically even before convergence and can be used to monitor results. Convergence is fast even on large datasets requiring only several hours. The beta.txt file is saved at the end.
 
 
 Data sets
@@ -89,8 +87,7 @@ Model fits
 ----------
 
 Model fits for the HGDP data, 1000 Genomes data and Balding and
-Nichols simulations using the UNPHASED conjugate model are on Dropbox
-at:
+Nichols simulations are on Dropbox at:
 
 https://www.dropbox.com/home/research/genomic-data
 
