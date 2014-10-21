@@ -1,4 +1,4 @@
-This package implements a scalable, multi-threaded implementation of the TeraStructure algorithm for fitting a Bayesian model of genetic variationin human populations on tera-sample-sized data sets ($10^{12}$ observed genotypes, e.g., 1M individuals at 1M SNPs).
+*This package implements a scalable, multi-threaded implementation of the TeraStructure algorithm for fitting a Bayesian model of genetic variationin human populations on tera-sample-sized data sets ($10^{12}$ observed genotypes, e.g., 1M individuals at 1M SNPs).*
 
 Installation
 ------------
@@ -23,10 +23,10 @@ different prefix is provided to configure. (See pkg/INSTALL.)
 Reference
 ---------
 
-Fitting probabilistic models of genetic variation on millions of humans
+**Fitting probabilistic models of genetic variation on millions of humans**
 
 P. Gopalan, W. Hao, D.M. Blei, J.D. Storey
-In submission.
+*In submission.*
 
 Abstract
 --------
