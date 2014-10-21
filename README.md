@@ -61,18 +61,6 @@ POPGEN: Population genetics inference software
 	-seed <val>	 value is a real number (read as "double")
 	      		 sets the seed for the GSL library
 
-Example
--------
-
-Please see pkg/scripts/pop.pl for an example of how nonconjugate inference is run under the marginal model.
-
-./src/popgen -file hgdp_940.012 -n 940 -k 6 -l 619883 -label snp  -rfreq 1000 -idfile 1kG_1500.indv -A
-
-* Output written to directory n940-k6-l619883-snp/
-* theta.txt, beta.txt: approximate posterior mixed-memberships 
-
-Note that theta.txt is saved periodically even before convergence and can be used to monitor results. Convergence is fast even on large datasets requiring only several hours. The beta.txt file is saved at the end.
-
 
 Data sets
 ---------
