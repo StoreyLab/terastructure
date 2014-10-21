@@ -20,8 +20,8 @@ libraries may need to be specified:
 The binary 'gaprec' will be installed in /usr/local/bin unless a
 different prefix is provided to configure. (See pkg/INSTALL.)
 
-Reference
----------
+Citation
+--------
 
 **Fitting probabilistic models of genetic variation on millions of humans**  
 **P. Gopalan, W. Hao, D.M. Blei, J.D. Storey**    
