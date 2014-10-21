@@ -26,6 +26,7 @@ Reference
 **Fitting probabilistic models of genetic variation on millions of humans**
 
 P. Gopalan, W. Hao, D.M. Blei, J.D. Storey
+
 *In submission.*
 
 Abstract
