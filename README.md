@@ -82,7 +82,7 @@ Real and simulated data sets are on Dropbox at:
 
 https://www.dropbox.com/home/research/genomic-data
 
-If you cannot access it, please send a note to pgopalan@cs.princeton.edu.
+Please contact the authors for access.
 
 Model fits
 ----------
@@ -93,6 +93,5 @@ at:
 
 https://www.dropbox.com/home/research/genomic-data
 
-* n1500-l1.5M-k1to10-fits.tgz
-* n940-l6K-k5to15-fits.tgz
-* simulations/admix_except_3_and_001.tgz
+Please contact the authors for access.
+
