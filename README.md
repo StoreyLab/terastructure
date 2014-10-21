@@ -49,10 +49,6 @@ POPGEN: Population genetics inference software
         -stochastic      run stochastic variational inference
         -label           descriptive tag for the output directory
 
-	-marginf         use the marginal model and nonconjugate inference
-	-broken          use the original (broken) model
-	(by default it runs inference for the fake phase model)
-
 	OPTIONAL
 	-file-suffix	 save files with the corresponding iteration as suffix
         -force           overwrite existing output directory
