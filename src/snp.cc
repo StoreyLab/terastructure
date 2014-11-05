@@ -149,8 +149,8 @@ SNP::read_bed(string s)
 
   //compute blocksize
   int numbytes = n/4;
-  if(n % 4 != 0) 
-    n++;
+  if(_env.n % 4 != 0) 
+    numbytes++;
 
   //begin bed reading
   string bed = prefix + ".bed";
@@ -209,16 +209,16 @@ SNP::read_bed(string s)
         KV kv(i, loc);
         _missing_snps[kv] = true;
         missing++;
-        yd[i][loc] = 0; // default XXX revisit
+        yd[i][loc] = 0;
       } else{
-          if(currbyte % 4 == 3) { //0
-          yd[i][loc] = 0;
+          if(currbyte % 4 == 3) { //0 or 2?
+          yd[i][loc] = 2;
           a0++;
         } else if(currbyte % 4 == 2) { //1
           yd[i][loc] = 1;
           a1++;
-        } else if(currbyte % 4 == 0) { //2
-          yd[i][loc] = 2;
+        } else if(currbyte % 4 == 0) { //2 or 0?
+          yd[i][loc] = 0;
           a2++;
         }
         m += yd[i][loc];
