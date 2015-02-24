@@ -58,22 +58,4 @@ POPGEN: Population genetics inference software
 	      		 sets the seed for the GSL library
 
 
-Data sets
----------
-
-Real and simulated data sets are on Dropbox at:
-
-https://www.dropbox.com/home/research/genomic-data
-
-Please contact the authors for access.
-
-Model fits
-----------
-
-Model fits for the HGDP data, 1000 Genomes data and Balding and
-Nichols simulations are on Dropbox at:
-
-https://www.dropbox.com/home/research/genomic-data
-
-Please contact the authors for access.
 
