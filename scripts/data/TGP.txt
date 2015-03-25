@@ -12,5 +12,5 @@ now use plink to make a bed:
 
 run the code, e.g.:
 
-  ~/git/popgen/pkg/src/popgen -file TGP_1718.bed -n 1718 -l 1854622 -E -nthreads 36 -k 10 -label E01 -seed 1
+  terastructure -file TGP_1718.bed -n 1718 -l 1854622 -E -nthreads 36 -k 10 -label E01 -seed 1
 
