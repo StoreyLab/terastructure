@@ -25,7 +25,7 @@ Citation
 
 **Fitting probabilistic models of genetic variation on millions of humans**  
 **P. Gopalan, W. Hao, D.M. Blei, J.D. Storey**    
-*In submission.*  
+bioRxiv link: http://biorxiv.org/content/early/2014/12/24/013227  
 
 Abstract
 --------
@@ -35,10 +35,10 @@ The goal of population genetics is to quantitatively understand variation of gen
 TeraStructure is a new algorithm to fit Bayesian models of genetic variation in human populations on tera-sample-sized data sets (10^12 observed genotypes, e.g., 1M individuals at 1M SNPs). It is a principled approach to approximate Bayesian inference that iterates between subsampling locations of the genome and updating an estimate of the latent population structure. On real and simulated data sets of up to 10K individuals, TeraStructure is twice as fast as existing methods and recovers the latent population structure with equal accuracy. On genomic data simulated at the tera-sample-size scales, TeraStructure continues to be accurate and is the only method that can complete its analysis.
 
 
-POPGEN: Population genetics inference software
+TeraStructure: Population genetics inference software
 ----------------------------------------------
 
-**popgen** [OPTIONS]
+**terastructure** [OPTIONS]
 
         -help            usage
         -file <name>     location by individuals matrix of SNP values (0,1,2)
@@ -58,22 +58,4 @@ POPGEN: Population genetics inference software
 	      		 sets the seed for the GSL library
 
 
-Data sets
----------
-
-Real and simulated data sets are on Dropbox at:
-
-https://www.dropbox.com/home/research/genomic-data
-
-Please contact the authors for access.
-
-Model fits
-----------
-
-Model fits for the HGDP data, 1000 Genomes data and Balding and
-Nichols simulations are on Dropbox at:
-
-https://www.dropbox.com/home/research/genomic-data
-
-Please contact the authors for access.
 
