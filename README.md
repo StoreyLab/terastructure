@@ -35,10 +35,10 @@ The goal of population genetics is to quantitatively understand variation of gen
 TeraStructure is a new algorithm to fit Bayesian models of genetic variation in human populations on tera-sample-sized data sets (10^12 observed genotypes, e.g., 1M individuals at 1M SNPs). It is a principled approach to approximate Bayesian inference that iterates between subsampling locations of the genome and updating an estimate of the latent population structure. On real and simulated data sets of up to 10K individuals, TeraStructure is twice as fast as existing methods and recovers the latent population structure with equal accuracy. On genomic data simulated at the tera-sample-size scales, TeraStructure continues to be accurate and is the only method that can complete its analysis.
 
 
-POPGEN: Population genetics inference software
+TeraStructure: Population genetics inference software
 ----------------------------------------------
 
-**popgen** [OPTIONS]
+**terastructure** [OPTIONS]
 
         -help            usage
         -file <name>     location by individuals matrix of SNP values (0,1,2)

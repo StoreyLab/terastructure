@@ -225,12 +225,12 @@ Env::Env(uint32_t N, uint32_t K, uint32_t L,
     epsilon(1e-30),
     logepsilon(log(epsilon)),
     
-    tau0(1),
+    tau0(1), //default 1
     kappa(0.5),
-    nodetau0(1),
+    nodetau0(1), //default 1
     nodekappa(0.5),
 
-    online_iterations(10),
+    online_iterations(10), //default 10
     terminate(false),
 
     datfname(dfname),

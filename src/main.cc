@@ -77,7 +77,7 @@ main(int argc, char **argv)
   bool compute_beta = false;
   string locations_file = "";
   uint32_t nthreads = 6;
-  double stop_threshold = 1e-5;
+  double stop_threshold = 1e-5; //1e-5
 
   if (argc == 1) {
     usage();
@@ -158,6 +158,9 @@ main(int argc, char **argv)
     } else if (strcmp(argv[i], "-E") == 0) {
       snpsamplinge = true;
       fprintf(stdout, "+ algorithm E option set\n");
+    } else if (strcmp(argv[i], "-stochastic")==0) {
+      snpsamplinge = true;
+      fprintf(stdout, "+ stochastic option set\n");
     } else if (strcmp(argv[i], "-F") == 0) {
       snpsamplingf = true;
       simulation3 = true;
