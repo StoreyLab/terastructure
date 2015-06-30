@@ -7,17 +7,16 @@ Required libraries: gsl, gslblas, pthread
 
 On Linux/Unix run
 
- cd pkg
- ./configure
- make; make install
+    ./configure
+    make; make install
 
 On Mac OS, the location of the required gsl, gslblas and pthread
 libraries may need to be specified:
 
- ./configure LDFLAGS="-L/opt/local/lib" CPPFLAGS="-I/opt/local/include"
- make; make install
+    ./configure LDFLAGS="-L/opt/local/lib" CPPFLAGS="-I/opt/local/include"
+    make; make install
 
-The binary 'gaprec' will be installed in /usr/local/bin unless a
+The binary `terastructure` will be installed in /usr/local/bin unless a
 different prefix is provided to configure. (See pkg/INSTALL.)
 
 Citation
