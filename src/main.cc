@@ -1,12 +1,12 @@
 #include "env.hh"
 #include "marginf.hh"
 #include "snpsamplinga.hh"
-#include "snpsamplingb.hh"
-#include "snpsamplingc.hh"
-#include "snpsamplingd.hh"
+//#include "snpsamplingb.hh"
+//#include "snpsamplingc.hh"
+//#include "snpsamplingd.hh"
 #include "snpsamplinge.hh"
-#include "snpsamplingf.hh"
-#include "snpsamplingg.hh"
+//#include "snpsamplingf.hh"
+//#include "snpsamplingg.hh"
 #include "log.hh"
 #include <stdlib.h>
 
@@ -146,7 +146,7 @@ main(int argc, char **argv)
     } else if (strcmp(argv[i], "-snpsamplinga") == 0) {
       snpsamplinga = true;
       fprintf(stdout, "+ snp sampling A option set\n");
-    } else if (strcmp(argv[i], "-B") == 0) {
+    } /*else if (strcmp(argv[i], "-B") == 0) {
       snpsamplingb = true;
       fprintf(stdout, "+ algorithm B option set\n");
     } else if (strcmp(argv[i], "-C") == 0) {
@@ -155,13 +155,13 @@ main(int argc, char **argv)
     } else if (strcmp(argv[i], "-D") == 0) {
       snpsamplingd = true;
       fprintf(stdout, "+ algorithm D option set\n");
-    } else if (strcmp(argv[i], "-E") == 0) {
+    }*/ else if (strcmp(argv[i], "-E") == 0) {
       snpsamplinge = true;
       fprintf(stdout, "+ algorithm E option set\n");
     } else if (strcmp(argv[i], "-stochastic")==0) {
       snpsamplinge = true;
       fprintf(stdout, "+ stochastic option set\n");
-    } else if (strcmp(argv[i], "-F") == 0) {
+    } /*else if (strcmp(argv[i], "-F") == 0) {
       snpsamplingf = true;
       simulation3 = true;
       fprintf(stdout, "+ algorithm F option set\n");
@@ -169,7 +169,7 @@ main(int argc, char **argv)
       snpsamplingg = true;
       simulation3 = true;
       fprintf(stdout, "+ algorithm G option set\n");
-    } else if (strcmp(argv[i], "-seed") == 0) {
+    }*/ else if (strcmp(argv[i], "-seed") == 0) {
       seed = atof(argv[++i]);
       fprintf(stdout, "+ random seed set to %.5f\n", seed);
     } else if (strcmp(argv[i], "-file-suffix") == 0) {
