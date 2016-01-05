@@ -256,7 +256,7 @@ main(int argc, char **argv)
     if (snpsamplinga) {
       SNPSamplingA snpsamplingA(env, snp);
       snpsamplingA.infer();
-    } else if (snpsamplingb) {
+    } /*else if (snpsamplingb) {
       SNPSamplingB snpsamplingB(env, snp);
       snpsamplingB.infer();
     } else if (snpsamplingc) {
@@ -265,10 +265,10 @@ main(int argc, char **argv)
     } else if (snpsamplingd) {
       SNPSamplingD snpsamplingD(env, snp);
       snpsamplingD.infer();
-    } else if (snpsamplinge) {
+    }*/ else if (snpsamplinge) {
       SNPSamplingE snpsamplingE(env, snp);
       snpsamplingE.infer();
-    } else if (snpsamplingf) {
+    }/* else if (snpsamplingf) {
       SNPSamplingF snpsamplingF(env, snp);
       snpsamplingF.infer();
     } else if (snpsamplingg) {
@@ -277,7 +277,7 @@ main(int argc, char **argv)
     } else {
       MargInf marg(env, snp);
       marg.infer();
-    }
+    }*/
   } else {
     MargInf popinf1(env, snp);
     MargInf popinf2(env, snp);

@@ -65,7 +65,7 @@ public:
 
   const AdjMatrix &y() const { assert(_y); return *_y; }
   AdjMatrix &y() { assert(_y); return *_y; }
-  const map<KV, bool> &missing_snps() const { return _missing_snps; }
+  //const map<KV, bool> &missing_snps() const { return _missing_snps; }
   bool is_missing(uint32_t indiv, uint32_t loc) const;
   string label(uint32_t id) const;
 
@@ -90,7 +90,7 @@ public:
 private:
   Env &_env;
   AdjMatrix *_y;
-  map<KV, bool> _missing_snps;
+  //map<KV, bool> _missing_snps;
   map<uint32_t, string> _labels;
   uint32_t _thrown;
   Array _maf;
@@ -160,13 +160,13 @@ SNP::dad(uint32_t a, uint32_t b) const
 }
 
 inline bool
-SNP::is_missing(uint32_t indiv, uint32_t loc) const
+SNP:::s_missing(uint32_t indiv, uint32_t loc) const
 {
-  KV kv(indiv, loc);
-  map<KV, bool>::const_iterator i = _missing_snps.find(kv);
-  if (i == _missing_snps.end())
-    return false;
-  return true;
+  assert(_y);
+  const yval_t **yd = _y->const_data();
+  if (yd[indiv][loc] == 3)
+    return true;
+  return false;
 }
 
 inline string

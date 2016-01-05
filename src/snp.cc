@@ -52,12 +52,8 @@ SNP::read(string s)
     uint32_t c = 0;
     for (uint32_t i = 0; i < _env.n; ++i) {
       if (tmpbuf[i] == '-') {
-				KV kv(i, loc);
-				//vector<uint32_t> &v = _missing_snps[loc];
-				//v.push_back(i);
-				_missing_snps[kv] = true;
 				missing++;
-				yd[i][loc] = 0; // default XXX revisit
+				yd[i][loc] = 3; //mark as missing
       } else {
 				yd[i][loc] = tmpbuf[i] - '0';
 				if (yd[i][loc] == 0)
@@ -85,7 +81,6 @@ SNP::read(string s)
     }
   }
   Env::plog("missing snps", missing);
-  Env::plog("missing snps 2", _missing_snps.size());
 
   Env::plog("0s snps", a0);
   Env::plog("1s snps", a1);
@@ -206,10 +201,8 @@ SNP::read_bed(string s)
     //loop over SNPs
     for(uint32_t i = 0; i < _env.n; i++) {
       if(currbyte % 4 == 1) { //missing val
-        KV kv(i, loc);
-        _missing_snps[kv] = true;
         missing++;
-        yd[i][loc] = 0;
+        yd[i][loc] = 3;
       } else{
           if(currbyte % 4 == 3) { //0 or 2?
           yd[i][loc] = 2;
@@ -230,7 +223,7 @@ SNP::read_bed(string s)
       if(shiftcount == 4) {
         shiftcount = 0;
         byteind++;
-        currbyte =(uint8_t)  buffer[byteind];
+        currbyte = (uint8_t) buffer[byteind];
       }
     }
 
@@ -249,7 +242,6 @@ SNP::read_bed(string s)
   }
 
   Env::plog("missing snps", missing);
-  Env::plog("missing snps 2", _missing_snps.size());
 
   Env::plog("0s snps", a0);
   Env::plog("1s snps", a1);
