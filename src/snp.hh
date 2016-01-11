@@ -160,7 +160,7 @@ SNP::dad(uint32_t a, uint32_t b) const
 }
 
 inline bool
-SNP:::s_missing(uint32_t indiv, uint32_t loc) const
+SNP::is_missing(uint32_t indiv, uint32_t loc) const
 {
   assert(_y);
   const yval_t **yd = _y->const_data();
