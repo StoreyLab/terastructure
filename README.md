@@ -10,11 +10,7 @@ On Linux/Unix run
     ./configure
     make; make install
 
-On Mac OS, the location of the required gsl, gslblas and pthread
-libraries may need to be specified:
-
-    ./configure LDFLAGS="-L/opt/local/lib" CPPFLAGS="-I/opt/local/include"
-    make; make install
+Mac OS is currently not supported.
 
 The binary `terastructure` will be installed in /usr/local/bin unless a
 different prefix is provided to configure. (See pkg/INSTALL.)

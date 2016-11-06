@@ -8,7 +8,7 @@
 #include <math.h>
 #include <iostream>
 #include <sstream>
-#include <string>
+#include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
 
