@@ -253,10 +253,10 @@ main(int argc, char **argv)
   }
 
   if (!loadcmp) {  
-    if (snpsamplinga) {
+    /* if (snpsamplinga) {
       SNPSamplingA snpsamplingA(env, snp);
       snpsamplingA.infer();
-    } /*else if (snpsamplingb) {
+    } else if (snpsamplingb) {
       SNPSamplingB snpsamplingB(env, snp);
       snpsamplingB.infer();
     } else if (snpsamplingc) {
