@@ -40,7 +40,6 @@ TeraStructure: Population genetics inference software
         -n <N>           number of individuals
         -l <L>           number of locations
         -k <K>           number of populations
-        -batch           run batch variational inference
         -stochastic      run stochastic variational inference
         -label           descriptive tag for the output directory
 
