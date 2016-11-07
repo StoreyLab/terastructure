@@ -70,12 +70,13 @@ SNPSamplingE::SNPSamplingE(Env &env, SNP &snp)
     printf("cannot open heldout file:%s\n",  strerror(errno));
     exit(-1);
   }
-
+/*
   _tf = fopen(Env::file_str("/test.txt").c_str(), "w");
   if (!_tf)  {
     printf("cannot open heldout file:%s\n",  strerror(errno));
     exit(-1);
   }
+
 
   _hef = fopen(Env::file_str("/heldout-locs.txt").c_str(), "w");
   if (!_hef)  {
@@ -93,7 +94,7 @@ SNPSamplingE::SNPSamplingE(Env &env, SNP &snp)
   if (!_tef)  {
     lerr("cannot open training edges file:%s\n",  strerror(errno));
     exit(-1);
-  }
+  }*/
 
   if (_env.compute_beta) {
     _env.online_iterations = 100; // tightly optimize given the thetas
@@ -121,12 +122,13 @@ SNPSamplingE::SNPSamplingE(Env &env, SNP &snp)
   init_heldout_sets();
   init_gamma();
   init_lambda();
-
+/*
   _lf = fopen(Env::file_str("/logl.txt").c_str(), "w");
   if (!_lf)  {
     lerr("cannot open logl file:%s\n",  strerror(errno));
     exit(-1);
   }
+  */
   estimate_all_theta();
 
   printf("+ computing initial heldout likelihood\n");
@@ -563,13 +565,6 @@ SNPSamplingE::compute_likelihood(bool first, bool validation)
     double v = 0; //validation_likelihood();
     double t = 0; //t = training_likelihood();
 
-    FILE *f = fopen(Env::file_str("/max.txt").c_str(), "w");
-    fprintf(f, "%d\t%d\t%.5f\t%.5f\t%.5f\t%.5f\t%d\n",
-	    _iter, duration(),
-	    a, t, v, _max_h,
-	    why);
-    fclose(f);
-
     if (_env.use_validation_stop) {
       _hol_mode = false;
       save_model();
@@ -595,20 +590,18 @@ SNPSamplingE::save_gamma()
     string s = _snp.label(n);
     if (s == "")
       s = "unknown";
-    fprintf(f, "%d\t%s\t", n, s.c_str());
-    fprintf(g, "%d\t%s\t", n, s.c_str());
     double max = .0;
     uint32_t max_k = 0;
     for (uint32_t k = 0; k < _k; ++k) {
       fprintf(f, "%.8f\t", gd[n][k]);
       fprintf(g, "%.8f\t", td[n][k]);
       if (gd[n][k] > max) {
-	max = gd[n][k];
-	max_k = k;
+        max = gd[n][k];
+        max_k = k;
       }
     }
-    fprintf(f,"%d\n", max_k);
-    fprintf(g,"%d\n", max_k);
+    fprintf(f,"\n", max_k);
+    fprintf(g,"\n", max_k);
   }
   fclose(f);
   fclose(g);

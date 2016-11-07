@@ -31,7 +31,7 @@ SNP::read(string s)
 
   yval_t **yd = _y->data();
 
-  FILE *maff = fopen(Env::file_str("/maf.tsv").c_str(), "w");
+  //FILE *maff = fopen(Env::file_str("/maf.tsv").c_str(), "w");
   FILE *f = fopen(s.c_str(), "r");
   if (!f) {
     lerr("cannot open file %s:%s", s.c_str(), strerror(errno));
@@ -68,9 +68,9 @@ SNP::read(string s)
       debug("%c %d\n", tmpbuf[i], yd[i][loc]);
     }
     assert(c);
-    m /= (2 * c);
+    /*m /= (2 * c);
     _maf[loc] = 0.5 - fabs(0.5 - m);
-    fprintf(maff, "%d\t%.5f\t%.5f\n", loc, m, _maf[loc]);
+    fprintf(maff, "%d\t%.5f\t%.5f\n", loc, m, _maf[loc]);*/
 
     loc++;
     if (loc >= _env.l)
@@ -87,7 +87,7 @@ SNP::read(string s)
   Env::plog("2s snps", a2);
   fflush(stdout);
   fclose(f);
-  fclose(maff);
+  //fclose(maff);
 
   return 0;
 }
@@ -183,7 +183,7 @@ SNP::read_bed(string s)
   }
 
   //now read in the SNPs!
-  FILE *maff = fopen(Env::file_str("/maf.tsv").c_str(), "w");
+  //FILE *maff = fopen(Env::file_str("/maf.tsv").c_str(), "w");
   char buffer[numbytes];
   uint8_t currbyte;
   uint32_t shiftcount = 0; //number of times i've shifted the bits
@@ -226,11 +226,10 @@ SNP::read_bed(string s)
         currbyte = (uint8_t) buffer[byteind];
       }
     }
-
     assert(c);
-    m /= (2 * c);
+    /*m /= (2 * c);
     _maf[loc] = 0.5 - fabs(0.5 - m);
-    fprintf(maff, "%d\t%.5f\t%.5f\n", loc, m, _maf[loc]);
+    fprintf(maff, "%d\t%.5f\t%.5f\n", loc, m, _maf[loc]);*/
 
     loc++;
     if (loc >= _env.l)
@@ -249,7 +248,7 @@ SNP::read_bed(string s)
   fflush(stdout);
 
   fclose(bed_f);
-  fclose(maff);
+  //fclose(maff);
 
 }
 
