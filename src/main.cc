@@ -1,5 +1,5 @@
 #include "env.hh"
-#include "marginf.hh"
+//#include "marginf.hh"
 //#include "snpsamplinga.hh"
 //#include "snpsamplingb.hh"
 //#include "snpsamplingc.hh"
@@ -278,7 +278,7 @@ main(int argc, char **argv)
       MargInf marg(env, snp);
       marg.infer();
     }*/
-  } else {
+  } else {/*  
     MargInf popinf1(env, snp);
     MargInf popinf2(env, snp);
     popinf1.load_model("beta_ps.txt", "theta_ps.txt");
@@ -301,6 +301,7 @@ main(int argc, char **argv)
 	if (snp.is_missing(n, l)) {
 	  skld[n][l] = .0;
 	  continue;
+    
 	}
 
 	Array p1(3), p2(3);
@@ -338,7 +339,7 @@ main(int argc, char **argv)
       fprintf(g, "%d\t%d\t%f\n", l, bc[l], bc[l] > 0 ? b[l] / bc[l] : .0);
 
     fclose(g);
-    fclose(f);
+    fclose(f);*/
   }
 }
 

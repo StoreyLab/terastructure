@@ -45,7 +45,7 @@ CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
 am_terastructure_OBJECTS = snp.$(OBJEXT) main.$(OBJEXT) log.$(OBJEXT) \
-	thread.$(OBJEXT) marginf.$(OBJEXT) snpsamplinge.$(OBJEXT)
+	thread.$(OBJEXT) snpsamplinge.$(OBJEXT)
 terastructure_OBJECTS = $(am_terastructure_OBJECTS)
 terastructure_LDADD = $(LDADD)
 DEFAULT_INCLUDES = -I.@am__isrc@
@@ -156,7 +156,7 @@ target_alias = @target_alias@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-terastructure_SOURCES = env.hh snp.hh snp.cc matrix.hh main.cc log.cc log.hh lib.hh thread.hh thread.cc tsqueue.hh marginf.cc marginf.hh snpsamplinge.cc snpsamplinge.hh
+terastructure_SOURCES = env.hh snp.hh snp.cc matrix.hh main.cc log.cc log.hh lib.hh thread.hh thread.cc tsqueue.hh snpsamplinge.cc snpsamplinge.hh
 all: all-am
 
 .SUFFIXES:
@@ -240,7 +240,6 @@ distclean-compile:
 
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/log.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/main.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/marginf.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/snp.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/snpsamplinge.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/thread.Po@am__quote@
