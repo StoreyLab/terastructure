@@ -157,7 +157,7 @@ target_alias = @target_alias@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-terastructure_SOURCES = env.hh snp.hh snp.cc matrix.hh main.cc log.cc log.hh lib.hh thread.hh thread.cc tsqueue.hh marginf.cc marginf.hh snpsamplinga.hh snpsamplinga.cc snpsamplinge.cc snpsamplinge.hh
+terastructure_SOURCES = env.hh snp.hh snp.cc matrix.hh main.cc log.cc log.hh lib.hh thread.hh thread.cc tsqueue.hh marginf.cc marginf.hh snpsamplinge.cc snpsamplinge.hh
 all: all-am
 
 .SUFFIXES:
