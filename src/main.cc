@@ -1,6 +1,6 @@
 #include "env.hh"
 #include "marginf.hh"
-#include "snpsamplinga.hh"
+//#include "snpsamplinga.hh"
 //#include "snpsamplingb.hh"
 //#include "snpsamplingc.hh"
 //#include "snpsamplingd.hh"
@@ -265,7 +265,7 @@ main(int argc, char **argv)
     } else if (snpsamplingd) {
       SNPSamplingD snpsamplingD(env, snp);
       snpsamplingD.infer();
-    }*/ else if (snpsamplinge) {
+    } else*/ if (snpsamplinge) {
       SNPSamplingE snpsamplingE(env, snp);
       snpsamplingE.infer();
     }/* else if (snpsamplingf) {
