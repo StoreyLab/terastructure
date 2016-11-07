@@ -140,13 +140,13 @@ main(int argc, char **argv)
     } else if (strcmp(argv[i], "-loadcmp") == 0) {
       loadcmp = true;
       fprintf(stdout, "+ loadcmp option set\n");
-    } else if (strcmp(argv[i], "-A") == 0) {
+    } /*else if (strcmp(argv[i], "-A") == 0) {
       marginf = true;
       fprintf(stdout, "+ algorithm A option set\n");
     } else if (strcmp(argv[i], "-snpsamplinga") == 0) {
       snpsamplinga = true;
       fprintf(stdout, "+ snp sampling A option set\n");
-    } /*else if (strcmp(argv[i], "-B") == 0) {
+    } else if (strcmp(argv[i], "-B") == 0) {
       snpsamplingb = true;
       fprintf(stdout, "+ algorithm B option set\n");
     } else if (strcmp(argv[i], "-C") == 0) {
