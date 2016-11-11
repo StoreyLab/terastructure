@@ -12,6 +12,6 @@ _out = file(args.outfile, "w")
 for line in _in:
   chunks = line.split()
   id = chunks[0]
-  theta = chunks[2:-1]
+  theta = chunks#[2:-1]
   out = ['0', id, '0', '0', ':'] + theta
   _out.write(" ".join(out) + "\n")
