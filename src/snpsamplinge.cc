@@ -36,7 +36,7 @@ SNPSamplingE::SNPSamplingE(Env &env, SNP &snp)
    _phinext(_k), _lambdaold(_k,_t),
    _v(_k,_t)
 {
-  printf("+ popinf initialization begin\n");
+  printf("+ initialization begin\n");
   fflush(stdout);
 
   _total_locations = _n * _l;
@@ -140,7 +140,7 @@ SNPSamplingE::SNPSamplingE(Env &env, SNP &snp)
   printf("+ done..\n");
 
   gettimeofday(&_last_iter, NULL);
-  printf("+ popinf initialization end\n");
+  printf("+ initialization end\n");
   fflush(stdout);
 
   if (_nthreads > 0) {
@@ -417,17 +417,21 @@ SNPSamplingE::compute_and_save_beta()
 {
   lerr("within compute_and_save_beta()");
   FILE *f = fopen(_env.locations_file.c_str(), "r");
-  assert(f);
-  uint32_t loc;
-  char b[4096*4];
   vector<uint32_t> locs;
-  while (!feof(f)) {
-    if (fscanf(f, "%d\t%*[^\n]s\n", &loc, b) >= 0) {
-      lerr("loc = %d", loc);
+  if(!f) {
+    for (uint32_t loc = 0; loc < _l; loc++)
       locs.push_back(loc);
+  } else{
+    uint32_t loc;
+    char b[4096*4];
+    while (!feof(f)) {
+      if (fscanf(f, "%d\t%*[^\n]s\n", &loc, b) >= 0) {
+        lerr("loc = %d", loc);
+        locs.push_back(loc);
+      }
     }
+    fclose(f);
   }
-  fclose(f);
   lerr("locs size = %d", locs.size());
   
   split_all_indivs();
@@ -636,7 +640,7 @@ SNPSamplingE::estimate_all_theta()
     assert(s);
     for (uint32_t k = 0; k < _k; ++k)
       theta[n][k] = gd[n][k] / s;
-  }
+  } 
   PopLib::set_dir_exp(_gamma, _Elogtheta);
 }
 
@@ -850,22 +854,16 @@ SNPSamplingE::load_gamma()
     char *p = line;
     do {
       char *q = NULL;
-      if (k == 1) {
-	p += 8;
-	k++;
-	continue;
-      }
       double d = strtod(p, &q);
       if (p == q) {
-	if (k < _k - 1) {
-	  fprintf(stderr, "error parsing gamma file\n");
-	  assert(0);
-	}
-	break;
+        if (k < _k - 1) {
+          fprintf(stderr, "error parsing gamma file\n");
+          assert(0);
+          }
+          break;
       }
       p = q;
-      if (k >= 2)
-	gammad[n][k-2] = d;
+      gammad[n][k] = d;
       k++;
     } while (p != NULL);
     n++;
@@ -874,7 +872,7 @@ SNPSamplingE::load_gamma()
   assert (n = _n);
   fclose(gammaf);
 
-  FILE *f = fopen(Env::file_str("gammasave.txt").c_str(), "w");
+  FILE *f = fopen(Env::file_str("/gammasave.txt").c_str(), "w");
   if (!f)  {
     lerr("cannot open gammasave file:%s\n",  strerror(errno));
     exit(-1);
@@ -890,8 +888,8 @@ SNPSamplingE::load_gamma()
     for (uint32_t k = 0; k < _k; ++k) {
       fprintf(f, "%.8f\t", gd[n][k]);
       if (gd[n][k] > max) {
-	max = gd[n][k];
-	max_k = k;
+        max = gd[n][k];
+        max_k = k;
       }
     }
     fprintf(f,"%d\n", max_k);
