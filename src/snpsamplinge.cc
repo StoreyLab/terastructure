@@ -418,20 +418,15 @@ SNPSamplingE::compute_and_save_beta()
   lerr("within compute_and_save_beta()");
   FILE *f = fopen(_env.locations_file.c_str(), "r");
   vector<uint32_t> locs;
-  if(!f) {
-    for (uint32_t loc = 0; loc < _l; loc++)
+  uint32_t loc;
+  char b[4096*4];
+  while (!feof(f)) {
+    if (fscanf(f, "%d\t%*[^\n]s\n", &loc, b) >= 0) {
+      lerr("loc = %d", loc);
       locs.push_back(loc);
-  } else{
-    uint32_t loc;
-    char b[4096*4];
-    while (!feof(f)) {
-      if (fscanf(f, "%d\t%*[^\n]s\n", &loc, b) >= 0) {
-        lerr("loc = %d", loc);
-        locs.push_back(loc);
-      }
     }
-    fclose(f);
   }
+  fclose(f);
   lerr("locs size = %d", locs.size());
   
   split_all_indivs();
