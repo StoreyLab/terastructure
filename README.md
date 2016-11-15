@@ -20,7 +20,7 @@ Citation
 
 **Fitting probabilistic models of genetic variation on millions of humans**  
 **P. Gopalan, W. Hao, D.M. Blei, J.D. Storey**    
-bioRxiv link: http://biorxiv.org/content/early/2014/12/24/013227  
+link: http://www.nature.com/ng/journal/vaop/ncurrent/full/ng.3710.html
 
 Abstract
 --------
