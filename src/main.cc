@@ -64,7 +64,7 @@ main(int argc, char **argv)
   bool snpsamplingd = false;
   bool snpsamplinge = false;
   bool snpsamplingf = false;
-  bool snpsamplingg = false;
+  bool snpsamplingg = true; //false;
   double seed = 0;
 
   bool file_suffix = false;
@@ -110,9 +110,11 @@ main(int argc, char **argv)
       datfname = string(argv[++i]);
       fprintf(stdout, "+ using file %s\n", datfname.c_str());
     } else if (strcmp(argv[i], "-batch") == 0) {
-      batch = true;
-      online = false;
-      fprintf(stdout, "+ batch option set\n");
+      fprintf(stdout, "batch option currently not available");
+      exit(0);
+      //batch = true;
+      //online = false;
+      //fprintf(stdout, "+ batch option set\n");
     } else if (strcmp(argv[i], "-n") == 0) {
       n = atoi(argv[++i]);
       fprintf(stdout, "+ n = %d\n", n);
@@ -353,8 +355,8 @@ usage()
 	  "\t-n <N>\t\t number of individuals\n"
 	  "\t-l <L>\t\t number of locations\n"
 	  "\t-k <K>\t\t number of populations\n"
-	  "\t-batch\t\t run batch variational inference\n"
-	  "\t-stochastic\t run stochastic variational inference\n"
+	  //"\t-batch\t\t run batch variational inference\n"
+	  //"\t-stochastic\t run stochastic variational inference\n"
 	  "\t-label\t\t descriptive tag for the output directory\n"
 	  "\t-force\t\t overwrite existing output directory\n"
 	  "\t-rfreq <val>\t checks for convergence and logs output every <val> iterations\n"
