@@ -62,9 +62,9 @@ main(int argc, char **argv)
   bool snpsamplingb = false;
   bool snpsamplingc = false;
   bool snpsamplingd = false;
-  bool snpsamplinge = false;
+  bool snpsamplinge = true; //false;
   bool snpsamplingf = false;
-  bool snpsamplingg = true; //false;
+  bool snpsamplingg = false;
   double seed = 0;
 
   bool file_suffix = false;
