@@ -36,7 +36,7 @@ TeraStructure: Population genetics inference software
 **terastructure** [OPTIONS]
 
         -help            usage
-        -file <name>     location by individuals matrix of SNP values (0,1,2)
+        -file <name>     genotype file
         -n <N>           number of individuals
         -l <L>           number of locations
         -k <K>           number of populations
