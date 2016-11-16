@@ -70,31 +70,6 @@ SNPSamplingE::SNPSamplingE(Env &env, SNP &snp)
     printf("cannot open heldout file:%s\n",  strerror(errno));
     exit(-1);
   }
-/*
-  _tf = fopen(Env::file_str("/test.txt").c_str(), "w");
-  if (!_tf)  {
-    printf("cannot open heldout file:%s\n",  strerror(errno));
-    exit(-1);
-  }
-
-
-  _hef = fopen(Env::file_str("/heldout-locs.txt").c_str(), "w");
-  if (!_hef)  {
-    lerr("cannot open heldout pairs file:%s\n",  strerror(errno));
-    exit(-1);
-  }
-
-  _vef = fopen(Env::file_str("/validation-locs.txt").c_str(), "w");
-  if (!_vef)  {
-    lerr("cannot open validation edges file:%s\n",  strerror(errno));
-    exit(-1);
-  }
-
-  _tef = fopen(Env::file_str("/training-locs.txt").c_str(), "w");
-  if (!_tef)  {
-    lerr("cannot open training edges file:%s\n",  strerror(errno));
-    exit(-1);
-  }*/
 
   if (_env.compute_beta) {
     _env.online_iterations = 100; // tightly optimize given the thetas
@@ -122,13 +97,7 @@ SNPSamplingE::SNPSamplingE(Env &env, SNP &snp)
   init_heldout_sets();
   init_gamma();
   init_lambda();
-/*
-  _lf = fopen(Env::file_str("/logl.txt").c_str(), "w");
-  if (!_lf)  {
-    lerr("cannot open logl file:%s\n",  strerror(errno));
-    exit(-1);
-  }
-  */
+
   estimate_all_theta();
 
   printf("+ computing initial heldout likelihood\n");
