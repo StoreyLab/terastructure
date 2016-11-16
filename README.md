@@ -3,7 +3,7 @@
 Manual
 ------
 
-See our wiki: https://github.com/StoreyLab/terastructure/wiki
+See our wiki for instructions and other details: https://github.com/StoreyLab/terastructure/wiki
 
 Citation
 --------
