@@ -2,7 +2,7 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.63])
-AC_INIT([terastructure], [0.1], [pgopalan@cs.princeton.edu])
+AC_INIT([terastructure], [1.0], [https://github.com/StoreyLab/terastructure/issues])
 : ${CFLAGS="-O3"}
 : ${CXXFLAGS="-O3"}
 AM_INIT_AUTOMAKE([terastructure], [0.1])
