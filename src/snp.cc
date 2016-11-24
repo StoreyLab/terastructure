@@ -80,11 +80,6 @@ SNP::read(string s)
       fflush(stdout);
     }
   }
-  Env::plog("missing snps", missing);
-
-  Env::plog("0s snps", a0);
-  Env::plog("1s snps", a1);
-  Env::plog("2s snps", a2);
   fflush(stdout);
   fclose(f);
   //fclose(maff);
@@ -240,11 +235,6 @@ SNP::read_bed(string s)
     }
   }
 
-  Env::plog("missing snps", missing);
-
-  Env::plog("0s snps", a0);
-  Env::plog("1s snps", a1);
-  Env::plog("2s snps", a2);
   fflush(stdout);
 
   fclose(bed_f);

@@ -118,63 +118,13 @@ public:
   bool compute_beta;
   string locations_file;
   double stop_threshold;
-  
-  template<class T> static void plog(string s, const T &v);
+   
   static string file_str(string fname);
 
 private:
   static FILE *_plogf;
 };
 
-
-template<class T> inline void
-Env::plog(string s, const T &v)
-{
-  fprintf(_plogf, "%s: %s\n", s.c_str(), v.s().c_str());
-  fflush(_plogf);  
-}
-
-template<> inline void
-Env::plog(string s, const double &v)
-{
-  fprintf(_plogf, "%s: %.9f\n", s.c_str(), v);
-  fflush(_plogf);
-}
-
-template<> inline void
-Env::plog(string s, const bool &v)
-{
-  fprintf(_plogf, "%s: %s\n", s.c_str(), v ? "True": "False");
-  fflush(_plogf);
-}
-
-template<> inline void
-Env::plog(string s, const int &v)
-{
-  fprintf(_plogf, "%s: %d\n", s.c_str(), v);
-  fflush(_plogf);
-}
-
-template<> inline void
-Env::plog(string s, const unsigned &v)
-{
-  fprintf(_plogf, "%s: %d\n", s.c_str(), v);
-  fflush(_plogf);
-}
-
-template<> inline void
-Env::plog(string s, const short unsigned int &v)
-{
-  fprintf(_plogf, "%s: %d\n", s.c_str(), v);
-  fflush(_plogf);
-}
-
-template<> inline void
-Env::plog(string s, const uint64_t &v)
-{
-  fprintf(_plogf, "%s: %lu\n", s.c_str(), v);
-  fflush(_plogf);
-}
 
 inline string
 Env::file_str(string fname)
@@ -269,12 +219,7 @@ Env::Env(uint32_t N, uint32_t K, uint32_t L,
   assert (Logger::initialize(prefix, "infer.log", 
 			     force_overwrite_dir, level) >= 0);
   fflush(stdout);
-  _plogf = fopen(file_str("/param.txt").c_str(), "w");
-  if (!_plogf)  {
-    printf("cannot open param file:%s\n",  strerror(errno));
-    exit(-1);
-  }
-
+  
   if (N > 10000) {
     blocks = 100;
     indiv_sample_size = N / blocks;
@@ -282,29 +227,6 @@ Env::Env(uint32_t N, uint32_t K, uint32_t L,
     blocks = 10;
     indiv_sample_size = N / blocks;
   }
-
-  plog("n", n);
-  plog("k", k);
-  plog("t", t);
-  plog("l", l);
-  plog("nthreads", nthreads);
-  plog("tau0", tau0);
-  plog("nodetau0", nodetau0);
-  plog("kappa", kappa);
-  plog("nodekappa", nodekappa);
-  plog("alpha", alpha);
-  plog("heldout_indiv_ratio", heldout_indiv_ratio);
-  plog("validation_ratio", validation_ratio);
-  plog("online_iterations", online_iterations);
-  plog("GSL seed", seed);
-  plog("file suffix", file_suffix);
-  plog("save beta", save_beta);
-  plog("adagrad", adagrad);
-  plog("indiv sample size", indiv_sample_size);
-  plog("blocks", blocks);
-  plog("compute_beta", compute_beta);
-  plog("stop_threshold", stop_threshold);
-  
   string ndatfname = file_str("/network.dat");
   unlink(ndatfname.c_str());
   assert (symlink(datfname.c_str(), ndatfname.c_str()) >= 0);
