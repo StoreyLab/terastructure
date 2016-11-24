@@ -42,9 +42,6 @@ SNPSamplingE::SNPSamplingE(Env &env, SNP &snp)
   _total_locations = _n * _l;
 
   info("+ running inference on %lu nodes\n", _n);
-  Env::plog("individuals n", _n);
-  Env::plog("locations l", _l);
-  Env::plog("populations k", _k);
 
   _alpha.set_elements(env.alpha);
   info("alpha set to %s\n", _alpha.s().c_str());
@@ -135,8 +132,6 @@ SNPSamplingE::init_heldout_sets()
     set_test_sample();
   set_validation_sample();
 
-  Env::plog("test ratio", _env.test_ratio);
-  Env::plog("validation ratio", _env.validation_ratio);
 }
 
 void
@@ -163,10 +158,6 @@ SNPSamplingE::set_test_sample()
       }
     }
   } while (lm.size() < nlocs);
-  Env::plog("test snps per location", per_loc_h);
-  Env::plog("test locations", nlocs);
-  Env::plog("total test snps", per_loc_h * nlocs);
-  Env::plog("total test snps (check)", _test_map.size());
 }
 
 void
@@ -190,7 +181,6 @@ SNPSamplingE::set_validation_sample2()
       }
     } while (c < h);
   }
-  Env::plog("(VAL2) total validation snps", _validation_map.size());
 }
 
 void
@@ -217,10 +207,6 @@ SNPSamplingE::set_validation_sample()
       }
     }
   } while (lm.size() < nlocs);
-  Env::plog("validation snps per location", per_loc_h);
-  Env::plog("validation locations", nlocs);
-  Env::plog("total validation snps", per_loc_h * nlocs);
-  Env::plog("(VAL1) total validation snps (check)", _validation_map.size());
 }
 
 void
