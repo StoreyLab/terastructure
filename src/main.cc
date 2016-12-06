@@ -70,9 +70,6 @@ main(int argc, char **argv)
   bool file_suffix = false;
   bool save_beta = false;
   bool adagrad = false;
-  bool simulation1 = false;
-  bool simulation2 = false;
-  bool simulation3 = false;
   bool use_test_set = false;
   bool compute_beta = false;
   string locations_file = "";
@@ -163,25 +160,13 @@ main(int argc, char **argv)
     } else if (strcmp(argv[i], "-stochastic")==0) {
       snpsamplinge = true;
       fprintf(stdout, "+ stochastic option set\n");
-    } /*else if (strcmp(argv[i], "-F") == 0) {
-      snpsamplingf = true;
-      simulation3 = true;
-      fprintf(stdout, "+ algorithm F option set\n");
-    } else if (strcmp(argv[i], "-G") == 0) {
-      snpsamplingg = true;
-      simulation3 = true;
-      fprintf(stdout, "+ algorithm G option set\n");
-    }*/ else if (strcmp(argv[i], "-seed") == 0) {
+    } else if (strcmp(argv[i], "-seed") == 0) {
       seed = atof(argv[++i]);
       fprintf(stdout, "+ random seed set to %.5f\n", seed);
     } else if (strcmp(argv[i], "-file-suffix") == 0) {
       file_suffix = true;
     } else if (strcmp(argv[i], "-save-beta") == 0) {
       save_beta = true;
-    } else if (strcmp(argv[i], "-sim1") ==0){
-      simulation1 = true;
-    } else if (strcmp(argv[i], "-sim2") ==0){
-      simulation2 = true;
     } else if (strcmp(argv[i], "-adagrad") ==0){
       adagrad = true;
     } else if (strcmp(argv[i], "-nthreads") ==0){
@@ -209,50 +194,22 @@ main(int argc, char **argv)
   Env env(n, k, l, batch, 
 	  force_overwrite_dir, datfname, label, eta_type,
 	  rfreq, logl, loadcmp, seed, file_suffix, 
-	  save_beta, adagrad, nthreads, simulation1 || simulation2 || simulation3, 
+	  save_beta, adagrad, nthreads,
 	  use_test_set, compute_beta, locations_file, stop_threshold);
   env_global = &env;
   
   SNP snp(env);
 
-  if (simulation1 && !simulation3) {
-    if (snp.sim1() < 0) {
-      fprintf(stderr, "error in simulation; quitting\n");
-      return -1;
-    }
-    env.n = snp.n();
-  } else if (simulation2) {
-    if(env.k != 6){
-      fprintf(stderr, "expecting k=6 for -sim2; quitting\n");
-    }
-    if (snp.sim2() < 0) {
-      fprintf(stderr, "error in simulation; quitting\n");
-    }
-  } else if (simulation3) {
-    assert(env.k == 6);
-    if (snp.sim3() < 0) {
-      fprintf(stderr, "error in simulation; quitting\n");
-      exit(-1);
-    }
-    /*
-    if (snp.sim1() < 0) {
-      fprintf(stderr, "error in simulation; quitting\n");
-      return -1;
-    }
-    env.n = snp.n();
-    lerr("env.n = %d, snp.n = %d", env.n, snp.n());
-    */
-  } else {
-    if (snp.read(datfname.c_str()) < 0) {
-      fprintf(stderr, "error reading %s; quitting\n", 
-	      datfname.c_str());
-      return -1;
-    }
-    if (idfile != "" && snp.read_idfile(idfile.c_str()) < 0)
-      fprintf(stderr, "error reading %s; quitting\n", 
-	      idfile.c_str());
-    env.n = snp.n();
+  if (snp.read(datfname.c_str()) < 0) {
+    fprintf(stderr, "error reading %s; quitting\n", 
+      datfname.c_str());
+    return -1;
   }
+  if (idfile != "" && snp.read_idfile(idfile.c_str()) < 0)
+    fprintf(stderr, "error reading %s; quitting\n", 
+      idfile.c_str());
+  env.n = snp.n();
+  
 
   if (!loadcmp) {  
     /* if (snpsamplinga) {

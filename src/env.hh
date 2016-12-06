@@ -57,7 +57,7 @@ public:
       uint32_t rfreq, bool logl, bool loadcmp,
       double seed, bool file_suffix,
       bool save_beta, bool adagrad, uint32_t nthreads,
-      bool simulation, bool use_test_set,
+      bool use_test_set,
       bool compute_beta, string locations_file,
       double stop_threshold);
   ~Env() { fclose(_plogf); }
@@ -116,7 +116,6 @@ public:
   bool file_suffix;
   bool save_beta;
   bool adagrad;
-  bool simulation;
   bool compute_beta;
   string locations_file;
   double stop_threshold;
@@ -194,7 +193,7 @@ Env::Env(uint32_t N, uint32_t K, uint32_t L,
 	 uint32_t rfreq, bool logl, bool lcmp, 
 	 double seedv, bool file_suffixv, 
 	 bool save_betav, bool adagradv, 
-	 uint32_t nthreadsv, bool simulationv,
+	 uint32_t nthreadsv,
 	 bool use_test_setv, bool compute_betav,
 	 string locations_filev,
 	 double stop_thresholdv)
@@ -244,7 +243,6 @@ Env::Env(uint32_t N, uint32_t K, uint32_t L,
     file_suffix(file_suffixv),
     save_beta(save_betav),
     adagrad(adagradv),
-    simulation(simulationv),
     use_test_set(use_test_setv),
     compute_beta(compute_betav),
     locations_file(locations_filev),
@@ -305,7 +303,6 @@ Env::Env(uint32_t N, uint32_t K, uint32_t L,
   plog("adagrad", adagrad);
   plog("indiv sample size", indiv_sample_size);
   plog("blocks", blocks);
-  plog("simulation", simulation);
   plog("compute_beta", compute_beta);
   plog("stop_threshold", stop_threshold);
   

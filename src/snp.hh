@@ -20,37 +20,6 @@
 
 using namespace std;
 
-class SNP;
-class BigSim {
-public:
-  BigSim(SNP &snp, Env &env):
-    _snp(snp),
-    _env(env),
-    _G(env.l, env.k),
-    _S(env.n, env.k) { }
-  ~BigSim() { }
-
-  const Matrix &G() const { return _G; }
-  const Matrix &S() const { return _S; }
-
-  int sim();
-  int sim1();
-  void sim_set_y(uint32_t loc, uint32_t block, YArray &y);
-  void sim_set_y(uint32_t loc, YArray &y);
-  
-  static const uint32_t L = 1854622;
-  static const uint32_t HGDP_size = 430775;
-
-private:
-  SNP &_snp;
-  Env &_env;
-
-  // simulation state
-  Matrix _G;
-  Matrix _S;
-  IDMap _loc_to_idx;
-};
-
 class SNP {
 public:
   SNP(Env &env);
@@ -59,10 +28,6 @@ public:
   int read(string s);
   int read_bed(string s);
   int read_idfile(string s);
-  int sim1();
-  int sim2();
-  int sim3();
-
   const AdjMatrix &y() const { assert(_y); return *_y; }
   AdjMatrix &y() { assert(_y); return *_y; }
   //const map<KV, bool> &missing_snps() const { return _missing_snps; }
@@ -75,11 +40,6 @@ public:
   yval_t mom(uint32_t i, uint32_t j) const;
 
   double maf(uint32_t l) const { return _maf[l]; }
-  void sim3_set_y(uint32_t loc, uint32_t block, YArray &y);
-  void sim3_set_y(uint32_t loc, YArray &y);
-  
-  const BigSim &bigsim() const { assert(_bsim); return *_bsim; }
-  BigSim &bigsim() { assert(_bsim); return *_bsim; }
 
   uint32_t thrown() const { return _thrown; }
 
@@ -94,11 +54,10 @@ private:
   map<uint32_t, string> _labels;
   uint32_t _thrown;
   Array _maf;
-  BigSim *_bsim;
   IDMap _loc_to_idx;
   gsl_rng *_r;
 
-  friend class BigSim;
+
 };
 
 inline
@@ -107,7 +66,6 @@ SNP::SNP(Env &env):
   _y(NULL),
   _thrown(0),
   _maf(_env.l),
-  _bsim(NULL),
   _r(NULL)
 {
   gsl_rng_env_setup();
@@ -207,26 +165,6 @@ SNP::kl(Array &p1, Array &p2)
   }
   return s;
 }
-
-inline int
-SNP::sim3() 
-{
-  _bsim = new BigSim(*this, _env);
-  return _bsim->sim1();
-}
-
-inline void
-SNP::sim3_set_y(uint32_t loc, uint32_t block, YArray &y)
-{
-  _bsim->sim_set_y(loc, block, y);
-}
-
-inline void
-SNP::sim3_set_y(uint32_t loc, YArray &y)
-{
-  _bsim->sim_set_y(loc, y);
-}
-
 
 
 
