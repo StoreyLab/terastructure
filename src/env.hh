@@ -227,10 +227,6 @@ Env::Env(uint32_t N, uint32_t K, uint32_t L,
     blocks = 10;
     indiv_sample_size = N / blocks;
   }
-  string ndatfname = file_str("/network.dat");
-  unlink(ndatfname.c_str());
-  assert (symlink(datfname.c_str(), ndatfname.c_str()) >= 0);
-  fprintf(stderr, "+ done initializing env\n");
 }
 
 /* 
