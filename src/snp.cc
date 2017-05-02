@@ -249,7 +249,7 @@ SNP::read_bed(string s)
 
   fclose(bed_f);
   //fclose(maff);
-
+  return 0;
 }
 
 int
