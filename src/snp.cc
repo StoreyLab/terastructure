@@ -22,7 +22,7 @@ SNP::read(string s)
 
   uint32_t missing = 0;
   fprintf(stdout, "+ reading (%d,%d) snps from %s\n", 
-	  _env.n, _env.l, s.c_str());
+    _env.n, _env.l, s.c_str());
   fflush(stdout);
 
   uint64_t a0=0,a1=0,a2=0;
@@ -38,7 +38,7 @@ SNP::read(string s)
     return -1;
   }
   char tmpbuf[2048*10];
-  assert (tmpbuf > 0);
+  assert (tmpbuf != NULL);
   string s1, s2;
   uint32_t id1, id2;
   
@@ -52,18 +52,18 @@ SNP::read(string s)
     uint32_t c = 0;
     for (uint32_t i = 0; i < _env.n; ++i) {
       if (tmpbuf[i] == '-') {
-				missing++;
-				yd[i][loc] = 3; //mark as missing
+        missing++;
+        yd[i][loc] = 3; //mark as missing
       } else {
-				yd[i][loc] = tmpbuf[i] - '0';
-				if (yd[i][loc] == 0)
-				  a0++;
-				else if (yd[i][loc] == 1)
-				  a1++;
-				else if (yd[i][loc] == 2)
-				  a2++;
-				m += yd[i][loc];
-				c++;
+        yd[i][loc] = tmpbuf[i] - '0';
+        if (yd[i][loc] == 0)
+          a0++;
+        else if (yd[i][loc] == 1)
+          a1++;
+        else if (yd[i][loc] == 2)
+          a2++;
+        m += yd[i][loc];
+        c++;
       }
       debug("%c %d\n", tmpbuf[i], yd[i][loc]);
     }
@@ -96,7 +96,7 @@ int
 SNP::read_bed(string s)
 {
   uint32_t missing = 0;
-	uint32_t n = 0, l = 0;
+  uint32_t n = 0, l = 0;
   string prefix = s.substr(0, s.length()-4);
 
   
@@ -104,15 +104,15 @@ SNP::read_bed(string s)
   string bim = prefix + ".bim";
   FILE *bim_f = fopen(bim.c_str(), "r");
   if(!bim_f) {
-		lerr("cannot open file %s:%s", bim.c_str(), strerror(errno));
-		return -1;
+    lerr("cannot open file %s:%s", bim.c_str(), strerror(errno));
+    return -1;
   }
-	char tmpbuf[2048*10];
-	assert (tmpbuf > 0);
-	while ( fgets(tmpbuf, 20480, bim_f) != NULL ) {
-		l++;
-	}
-	fclose(bim_f);
+  char tmpbuf[2048*10];
+  assert (tmpbuf != NULL);
+  while ( fgets(tmpbuf, 20480, bim_f) != NULL ) {
+    l++;
+  }
+  fclose(bim_f);
 
   printf("+ bim file tells us %d SNPs\n", l);
   if(_env.l != l) {
@@ -120,7 +120,7 @@ SNP::read_bed(string s)
     return -1;
   }
 
-	//read in number of individuals from .fam
+  //read in number of individuals from .fam
   string fam = prefix + ".fam";
   FILE *fam_f = fopen(fam.c_str(), "r");
   if(!fam_f) {
